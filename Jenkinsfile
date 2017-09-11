@@ -10,7 +10,7 @@ import java.net.URL
 
 //name of local artifactory server
 def server = Artifactory.server 'local_artifactory'
-def artifactory_repo = 'helloworld'
+def artifactory_repo = 'myTest'
 def scmUrl = scm.getUserRemoteConfigs()[0].getUrl()
 version = null
 
@@ -38,7 +38,8 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 			}
 
 	String archive_dir = "output"
-	String output_dir = "helloworld/${archive_dir}/${getVersion()}/files/"
+	// commented out since it's not used right now
+	//String output_dir = "helloworld/${archive_dir}/${getVersion()}/files/"
 
 			stage('Archive File') {
 				dir(archive_dir) {
