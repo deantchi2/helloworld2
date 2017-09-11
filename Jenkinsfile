@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 //to kickstart jenkinsjob
 
+library 'jenkins-libraries'
+
 import hudson.model.*
 import hudson.EnvVars
 import groovy.json.JsonSlurperClassic
