@@ -86,12 +86,12 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 	finally {
 
 	}
-}
 
-//fetches "Version_File", read, and pulls version number
-String getVersion() {
-	if (!version) {
-		version = readFile('VERSION_FILE').replaceAll(/[\n\r]/, '')
+	// fetches "Version_File", read, and pulls version number
+	String getVersion() {
+		if (!version) {
+			version = readFile('VERSION_FILE').replaceAll(/[\n\r]/, '')
 		}
-	return version
+		return version
+	}
 }
