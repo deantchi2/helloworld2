@@ -24,7 +24,7 @@ properties ([
       numToKeepStr: '30') ),
 
     [ $class: 'GithubProjectProperty',
-    	displayanme: '',
+    	displayname: '',
 	projectUrlStr: "${getGitHubURL(scmUrl)}" ]
     
 ])
