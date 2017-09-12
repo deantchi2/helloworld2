@@ -95,4 +95,3 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 		return version
 	}
 }
-}
