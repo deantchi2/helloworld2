@@ -31,8 +31,6 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 	node('builder-bob') {
 
 	try {
-		pipeline {
-
 			stage('Clean workspace') {
 				deleteDir()
 				sh 'ls -lah'
@@ -73,8 +71,6 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 			server.upload(upload_spec)
 		}
 	}
-}
-
 		}
 		}
 	catch (e) {
