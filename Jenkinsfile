@@ -35,6 +35,8 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 	node('builder-bob') {
 
 	try {
+		pipeline {
+
 			stage('Clean workspace') {
 				deleteDir()
 				sh 'ls -lah'
@@ -53,31 +55,32 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
           if ( is_master ) {
 
-          // define version and set Jenkins display name
-          String v = getVersion()
-          currentBuild.displayName = "#${env.BUILD_NUMBER} - v${v}"
+	          // define version and set Jenkins display name
+        	  String v = getVersion()
+	          currentBuild.displayName = "#${env.BUILD_NUMBER} - v${v}"
 
-          // defines artifactory upload spec
-          String path = "${artifactory_repo}/helloworld2/${v}-${env.BUILD_NUMBER}"
+        	  // defines artifactory upload spec
+	          String path = "${artifactory_repo}/helloworld2/${v}-${env.BUILD_NUMBER}"
 
-          String upload_spec = """{
-            "files": [
-              {
-                "pattern": "**",
+        	  String upload_spec = """{
+		"files": [
+			{
+                	"pattern": "**",
 
-                "target": "$path/",
+	                "target": "$path/",
 
-                "flat": "false"
-              }
-           ]
-          }"""
-          server.upload(upload_spec)
-          }
-				}
+        	        "flat": "false"
 			}
+ 			]
+		}"""
 
+			server.upload(upload_spec)
+		}
 	}
+}
 
+		}
+		}
 	catch (e) {
 		throw e
 	}
