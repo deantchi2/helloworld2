@@ -23,10 +23,6 @@ properties ([
       daysToKeepStr: '',
       numToKeepStr: '30') ),
 
-    [ $class: 'GithubProjectProperty',
-    	displayname: '',
-	projectUrlStr: "${getGitHubURL(scmUrl)}" ]
-    
 ])
 
 boolean is_master = ("${env.BRANCH_NAME}" == "master")
