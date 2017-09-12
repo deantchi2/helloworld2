@@ -45,8 +45,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 			}
 
 	String archive_dir = "output"
-	// commented out since it's not used right now
-	//String output_dir = "helloworld/${archive_dir}/${getVersion()}/files/"
+	String output_dir = "helloworld2/${archive_dir}/${getVersion()}/files/"
 
 			stage('Archive File') {
 				dir(archive_dir) {
@@ -59,7 +58,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
           currentBuild.displayName = "#${env.BUILD_NUMBER} - v${v}"
 
           // defines artifactory upload spec
-          String path = "${artifactory_repo}/${v}-${env.BUILD_NUMBER}"
+          String path = "${artifactory_repo}/helloworld2/${v}-${env.BUILD_NUMBER}"
 
           String upload_spec = """{
             "files": [
@@ -87,10 +86,12 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
 	}
 }
-	// fetches "Version_File", read, and pulls version number
-	String getVersion() {
-		if (!version) {
-			version = readFile('VERSION_FILE').replaceAll(/[\n\r]/, '')
-		}
-		return version
+
+
+// fetches "Version_File", read, and pulls version number
+String getVersion() {
+	if (!version) {
+		version = readFile('VERSION_FILE').replaceAll(/[\n\r]/, '')
 	}
+	return version
+}
