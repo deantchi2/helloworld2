@@ -86,7 +86,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 	finally {
 
 	}
-
+}
 	// fetches "Version_File", read, and pulls version number
 	String getVersion() {
 		if (!version) {
@@ -94,4 +94,3 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 		}
 		return version
 	}
-}
